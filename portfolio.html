@@ -1,188 +1,513 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portfolio - Webly Crafts</title>
-  <link rel="stylesheet" href="style.css">
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: "Poppins", sans-serif;
-      color: #fff;
-      overflow: hidden;
-    }
-    #bg-video {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      z-index: -1;
-    }
-    .overlay {
-      position: relative;
-      width: 100%;
-      height: 100vh;
-      background: rgba(0, 0, 0, 0.6);
-      display: flex;
-      flex-direction: column;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Washington Daniel</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    
-    .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 25px 80px;
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 1000;
-    background: rgba(0, 0, 0, 0.9);
-}
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #ffffff;
+            color: #1a1a1a;
+            line-height: 1.6;
+        }
 
-    .navbar img {
-      width: 150px;
-      border-radius: 10px;
-    }
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: white;
+            padding: 1.2rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            border-bottom: 1px solid #f0f0f0;
+        }
 
-    .nav-links {
-      list-style: none;
-      display: flex;
-      gap: 35px;
-    }
+        nav .logo {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #1a1a1a;
+            text-decoration: none;
+            letter-spacing: -0.5px;
+        }
 
-    .nav-links a {
-      text-decoration: none;
-      color: #fff;
-      font-weight: 500;
-      transition: color 0.3s ease;
-    }
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2.5rem;
+        }
 
-    .nav-links a:hover {
-      color: #00bcd4;
-    }
+        nav a {
+            color: #666;
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
 
-   
-    .page-heading {
-      text-align: center;
-      margin-top: 60px;
-      font-size: 2.5rem;
-      color: #00bcd4;
-    }
+        nav a:hover {
+            color: #1a1a1a;
+        }
 
-   
-    #portfolio {
-      position: absolute;
-      top: 55%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 80%;
-      max-width: 900px;
-      background: rgba(0, 0, 0, 0.5);
-      padding: 40px;
-      border-radius: 20px;
-      text-align: center;
-      line-height: 1.6;
-      z-index: 1;
-    }
+        /* Page Header */
+        .page-header {
+            margin-top: 60px;
+            padding: 4rem 2rem;
+            text-align: center;
+            background: linear-gradient(180deg, #ffffff 0%, #f9f9f9 100%);
+        }
 
-    #portfolio h1 {
-      color: #00bcd4;
-      margin-bottom: 20px;
-    }
+        .page-header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
 
-    #portfolio p {
-      font-size: 1.1rem;
-      margin-bottom: 25px;
-      color: #f1f1f1;
-    }
+        .page-header p {
+            font-size: 1.1rem;
+            color: #666;
+            font-weight: 400;
+        }
 
-   
-    .project {
-      margin-bottom: 25px;
-      padding: 20px;
-      background: rgba(255, 255, 255, 0.05);
-      border-radius: 15px;
-      transition: transform 0.3s, background 0.3s;
-    }
+        /* Container */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
 
-    .project:hover {
-      transform: translateY(-5px);
-      background: rgba(255, 255, 255, 0.1);
-    }
+        /* Portfolio Section */
+        .portfolio-section {
+            padding: 4rem 0;
+        }
 
-    .project h3 {
-      color: #00bcd4;
-      margin-bottom: 10px;
-    }
+        .portfolio-intro {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
 
-   
-    @media (max-width: 768px) {
-      #portfolio {
-        width: 90%;
-        padding: 25px;
-      }
-      .navbar {
-        flex-direction: column;
-        padding: 20px;
-      }
-      .nav-links {
-        flex-direction: column;
-        gap: 10px;
-      }
-      .page-heading {
-        font-size: 2rem;
-        margin-top: 40px;
-      }
-    }
-  </style>
+        .portfolio-intro p {
+            font-size: 1rem;
+            color: #555;
+            line-height: 1.8;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Portfolio Grid */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        /* Project Card */
+        .project-card {
+            background: white;
+            border: 1px solid #f0f0f0;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .project-card:hover {
+            border-color: #1a1a1a;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+            transform: translateY(-5px);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #f0f0f0 0%, #e0e0e0 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+        }
+
+        .project-content {
+            padding: 1.5rem;
+        }
+
+        .project-category {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #999;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .project-card h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+            color: #1a1a1a;
+        }
+
+        .project-card p {
+            font-size: 0.95rem;
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .project-link {
+            display: inline-block;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #1a1a1a;
+            text-decoration: none;
+            padding: 0.5rem 0;
+            border-bottom: 2px solid transparent;
+            transition: border-color 0.3s ease;
+        }
+
+        .project-link:hover {
+            border-bottom-color: #1a1a1a;
+        }
+
+        /* Filter Tabs */
+        .filter-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-tab {
+            padding: 0.7rem 1.5rem;
+            border: 1px solid #d0d0d0;
+            background: white;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            color: #666;
+        }
+
+        .filter-tab:hover {
+            border-color: #1a1a1a;
+            color: #1a1a1a;
+        }
+
+        .filter-tab.active {
+            background: #1a1a1a;
+            color: white;
+            border-color: #1a1a1a;
+        }
+
+        /* Stats Section */
+        .stats-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            padding: 3rem 0;
+            text-align: center;
+            border-top: 1px solid #f0f0f0;
+            border-bottom: 1px solid #f0f0f0;
+            margin-bottom: 3rem;
+        }
+
+        .stat-item h4 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-item p {
+            font-size: 0.9rem;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 4rem 2rem;
+            text-align: center;
+            background: #1a1a1a;
+            color: white;
+        }
+
+        .cta-section h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .cta-section p {
+            font-size: 1.1rem;
+            color: #ccc;
+            margin-bottom: 2rem;
+        }
+
+        .btn {
+            padding: 0.9rem 2rem;
+            font-size: 0.95rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 1.5px solid white;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: #1a1a1a;
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        footer {
+            background: white;
+            color: #666;
+            text-align: center;
+            padding: 2rem;
+            border-top: 1px solid #f0f0f0;
+            font-size: 0.9rem;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            nav ul {
+                gap: 1.5rem;
+            }
+
+            nav a {
+                font-size: 0.85rem;
+            }
+
+            .page-header {
+                padding: 3rem 1.5rem;
+            }
+
+            .page-header h1 {
+                font-size: 1.8rem;
+            }
+
+            .page-header p {
+                font-size: 1rem;
+            }
+
+            .portfolio-section {
+                padding: 2.5rem 0;
+            }
+
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .filter-tabs {
+                gap: 0.7rem;
+            }
+
+            .filter-tab {
+                padding: 0.6rem 1.2rem;
+                font-size: 0.85rem;
+            }
+
+            .stats-section {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .container {
+                padding: 0 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            nav {
+                padding: 1rem;
+            }
+
+            nav ul {
+                gap: 1rem;
+            }
+
+            .page-header h1 {
+                font-size: 1.5rem;
+            }
+
+            .container {
+                padding: 0 1rem;
+            }
+
+            .filter-tabs {
+                justify-content: flex-start;
+                overflow-x: auto;
+                padding-bottom: 0.5rem;
+            }
+
+            .filter-tab {
+                white-space: nowrap;
+            }
+
+            .stat-item h4 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
 </head>
 <body>
-
-
-  <video autoplay muted loop id="bg-video">
-    <source src="background.mp4" type="video/mp4">
-  </video>
-
-  
-  <div class="overlay">
-    <nav class="navbar">
-      <img src="logo.jpg" alt="Webly Crafts Logo">
-      <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="services.html">Services</a></li>
-        <li><a href="portfolio.html">Portfolio</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
+    <!-- Navigation -->
+    <nav>
+        <a href="index.html" class="logo">WD</a>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="portfolio.html">Work</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
     </nav>
 
-    <h1 class="page-heading">Our Portfolio</h1>
+    <!-- Page Header -->
+    <div class="page-header">
+        <h1>My Work</h1>
+        <p>A selection of projects I'm proud of</p>
+    </div>
 
-    
-    <section id="portfolio">
-      <h1>My Portfolio</h1>
-      <p>Welcome to my creative space! Here, you’ll find a selection of projects that showcase my skills, creativity, and attention to detail. Each project reflects my commitment to delivering high-quality results and innovative solutions.</p>
-    
-      <h2>Featured Projects</h2>
-    
-      <div class="project">
-        <h3>Project One – Web Design</h3>
-        <p>A brief description of what this project involved, the tools used, and the outcomes achieved. Highlight problem-solving or unique design aspects.</p>
-      </div>
-    
-      <div class="project">
-        <h3>Project Two – Web Development</h3>
-        <p>Explain the goals, your role, and the final results. You can include screenshots or links to live demos or GitHub repositories.</p>
-      </div>
-    
-      <p>More projects coming soon — stay tuned!</p>
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Portfolio Intro -->
+        <section class="portfolio-intro">
+            <p>I create beautiful, functional websites that help businesses and individuals achieve their goals. Each project is carefully crafted with attention to detail and user experience.</p>
+        </section>
+
+        <!-- Filter Tabs -->
+        <div class="filter-tabs">
+            <button class="filter-tab active">All Work</button>
+            <button class="filter-tab">Web Design</button>
+            <button class="filter-tab">Branding</button>
+            <button class="filter-tab">Development</button>
+        </div>
+
+        <!-- Portfolio Grid -->
+        <section class="portfolio-grid">
+            <!-- Project 1 -->
+            <div class="project-card">
+                <div class="project-image">🌐</div>
+                <div class="project-content">
+                    <p class="project-category">Web Design</p>
+                    <h3>Modern Business Website</h3>
+                    <p>A clean, responsive website for a digital agency with focus on user experience and modern design trends.</p>
+                    <a href="#" class="project-link">View Project →</a>
+                </div>
+            </div>
+
+            <!-- Project 2 -->
+            <div class="project-card">
+                <div class="project-image">🎨</div>
+                <div class="project-content">
+                    <p class="project-category">Branding</p>
+                    <h3>Brand Identity Design</h3>
+                    <p>Complete brand identity including logo, color palette, typography, and brand guidelines for a startup.</p>
+                    <a href="#" class="project-link">View Project →</a>
+                </div>
+            </div>
+
+            <!-- Project 3 -->
+            <div class="project-card">
+                <div class="project-image">💼</div>
+                <div class="project-content">
+                    <p class="project-category">Development</p>
+                    <h3>E-Commerce Platform</h3>
+                    <p>Fully functional e-commerce website with product catalog, shopping cart, and payment integration.</p>
+                    <a href="#" class="project-link">View Project →</a>
+                </div>
+            </div>
+
+            <!-- Project 4 -->
+            <div class="project-card">
+                <div class="project-image">📱</div>
+                <div class="project-content">
+                    <p class="project-category">Web Design</p>
+                    <h3>Mobile App Website</h3>
+                    <p>Landing page for a mobile application with engaging visuals and clear call-to-actions.</p>
+                    <a href="#" class="project-link">View Project →</a>
+                </div>
+            </div>
+
+            <!-- Project 5 -->
+            <div class="project-card">
+                <div class="project-image">🎯</div>
+                <div class="project-content">
+                    <p class="project-category">Design</p>
+                    <h3>Portfolio Website</h3>
+                    <p>Minimalist portfolio website showcasing creative work with smooth animations and interactions.</p>
+                    <a href="#" class="project-link">View Project →</a>
+                </div>
+            </div>
+
+            <!-- Project 6 -->
+            <div class="project-card">
+                <div class="project-image">✨</div>
+                <div class="project-content">
+                    <p class="project-category">Branding</p>
+                    <h3>Restaurant Branding</h3>
+                    <p>Restaurant brand identity with logo, menu design, and marketing materials with elegant aesthetics.</p>
+                    <a href="#" class="project-link">View Project →</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stats Section -->
+        <section class="stats-section">
+            <div class="stat-item">
+                <h4>50+</h4>
+                <p>Projects Completed</p>
+            </div>
+            <div class="stat-item">
+                <h4>40+</h4>
+                <p>Happy Clients</p>
+            </div>
+            <div class="stat-item">
+                <h4>4+</h4>
+                <p>Years Experience</p>
+            </div>
+            <div class="stat-item">
+                <h4>100%</h4>
+                <p>Satisfaction Rate</p>
+            </div>
+        </section>
+    </div>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <h2>Ready to Start Your Project?</h2>
+        <p>Let's create something amazing together</p>
+        <a href="contact.html" class="btn btn-secondary">Get in Touch</a>
     </section>
-  </div>
 
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Washington Daniel. All rights reserved.</p>
+    </footer>
 </body>
 </html>
