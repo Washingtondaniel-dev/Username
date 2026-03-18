@@ -1,207 +1,619 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contact - Webly Crafts</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Washington Daniel</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-  <style>
-  
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: "Poppins", sans-serif;
-      color: #fff;
-      overflow: hidden;
-    }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #ffffff;
+            color: #1a1a1a;
+            line-height: 1.6;
+        }
 
-    #bg-video {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      z-index: -1;
-    }
-    .overlay {
-      position: relative;
-      width: 100%;
-      height: 100vh;
-      background: rgba(0, 0, 0, 0.6);
-      display: flex;
-      flex-direction: column;
-    }
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: white;
+            padding: 1.2rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            border-bottom: 1px solid #f0f0f0;
+        }
 
-   .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 25px 80px;
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 1000;
-    background: rgba(0, 0, 0, 0.9);
-}
+        nav .logo {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #1a1a1a;
+            text-decoration: none;
+            letter-spacing: -0.5px;
+        }
 
-    .navbar img {
-      width: 150px;
-      border-radius: 10px;
-    }
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2.5rem;
+        }
 
-    .nav-links {
-      list-style: none;
-      display: flex;
-      gap: 35px;
-    }
+        nav a {
+            color: #666;
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
 
-    .nav-links a {
-      text-decoration: none;
-      color: #fff;
-      font-weight: 500;
-      transition: color 0.3s ease;
-    }
+        nav a:hover {
+            color: #1a1a1a;
+        }
 
-    .nav-links a:hover {
-      color: #00bcd4;
-    }
+        /* Page Header */
+        .page-header {
+            margin-top: 60px;
+            padding: 4rem 2rem;
+            text-align: center;
+            background: linear-gradient(180deg, #ffffff 0%, #f9f9f9 100%);
+        }
 
-    
-    .page-heading {
-      text-align: center;
-      font-size: 2.5rem;
-      color: #00bcd4;
-      margin-top: 60px;
-    }
+        .page-header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
 
-   
-    #contact {
-      position: absolute;
-      top: 55%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 80%;
-      max-width: 600px;
-      background: rgba(0, 0, 0, 0.6);
-      padding: 40px;
-      border-radius: 20px;
-      text-align: center;
-      line-height: 1.6;
-      box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
-    }
+        .page-header p {
+            font-size: 1.1rem;
+            color: #666;
+            font-weight: 400;
+        }
 
-    #contact h1 {
-      color: #00bcd4;
-      margin-bottom: 20px;
-    }
+        /* Container */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
 
-    #contact p {
-      color: #f1f1f1;
-      margin-bottom: 25px;
-    }
+        /* Contact Intro */
+        .contact-intro {
+            padding: 4rem 0;
+            text-align: center;
+            border-bottom: 1px solid #f0f0f0;
+        }
 
-  
-    form {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 15px;
-    }
+        .contact-intro p {
+            font-size: 1rem;
+            color: #555;
+            line-height: 1.8;
+            max-width: 700px;
+            margin: 0 auto;
+        }
 
-    input, textarea {
-      width: 100%;
-      padding: 12px;
-      border: none;
-      border-radius: 10px;
-      outline: none;
-      background: rgba(255, 255, 255, 0.1);
-      color: white;
-      font-size: 1rem;
-    }
+        /* Contact Content */
+        .contact-content {
+            padding: 4rem 0;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
 
-    input::placeholder,
-    textarea::placeholder {
-      color: #bbb;
-    }
+        /* Contact Info */
+        .contact-info {
+            border-bottom: 1px solid #f0f0f0;
+            padding-bottom: 3rem;
+        }
 
-    button {
-      background: #00bcd4;
-      color: #fff;
-      border: none;
-      padding: 12px 30px;
-      border-radius: 10px;
-      font-size: 1rem;
-      font-weight: bold;
-      cursor: pointer;
-      transition: 0.3s;
-    }
+        .contact-info h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+        }
 
-    button:hover {
-      background: #0097a7;
-    }
+        .info-item {
+            margin-bottom: 2rem;
+        }
 
-    
-    @media (max-width: 768px) {
-      .navbar {
-        flex-direction: column;
-        padding: 20px;
-      }
-      .nav-links {
-        flex-direction: column;
-        gap: 10px;
-      }
-      .page-heading {
-        font-size: 2rem;
-        margin-top: 40px;
-      }
-      #contact {
-        width: 90%;
-        padding: 25px;
-      }
-    }
-  </style>
+        .info-label {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #999;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .info-content {
+            font-size: 1.1rem;
+            color: #1a1a1a;
+            margin-bottom: 0.5rem;
+        }
+
+        .info-content a {
+            color: #1a1a1a;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .info-content a:hover {
+            color: #666;
+        }
+
+        /* Social Links */
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .social-links a {
+            width: 45px;
+            height: 45px;
+            border: 1px solid #d0d0d0;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            color: #1a1a1a;
+        }
+
+        .social-links a:hover {
+            border-color: #1a1a1a;
+            background: #1a1a1a;
+            color: white;
+        }
+
+        /* Contact Form */
+        .contact-form {
+            border-bottom: 1px solid #f0f0f0;
+            padding-bottom: 3rem;
+        }
+
+        .contact-form h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #1a1a1a;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.9rem;
+            border: 1px solid #d0d0d0;
+            border-radius: 6px;
+            font-family: inherit;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            resize: vertical;
+            min-height: 40px;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #1a1a1a;
+            box-shadow: 0 0 0 3px rgba(26, 26, 26, 0.1);
+        }
+
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .btn-submit {
+            padding: 0.9rem 2rem;
+            font-size: 0.95rem;
+            font-weight: 600;
+            background: #1a1a1a;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .btn-submit:hover {
+            background: #333;
+            transform: translateY(-2px);
+        }
+
+        .btn-submit:active {
+            transform: translateY(0);
+        }
+
+        /* Response Message */
+        .form-message {
+            margin-top: 1rem;
+            padding: 1rem;
+            border-radius: 6px;
+            display: none;
+            text-align: center;
+            font-weight: 500;
+        }
+
+        .form-message.success {
+            background: #f0f9f0;
+            color: #2d5016;
+            border: 1px solid #d4edda;
+            display: block;
+        }
+
+        .form-message.error {
+            background: #fdf8f0;
+            color: #7a4419;
+            border: 1px solid #f5d5b8;
+            display: block;
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            padding: 4rem 0;
+        }
+
+        .faq-section h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .faq-item {
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid #f0f0f0;
+            padding-bottom: 1.5rem;
+        }
+
+        .faq-item h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .faq-item h3:hover {
+            color: #666;
+        }
+
+        .faq-item p {
+            color: #555;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 4rem 2rem;
+            text-align: center;
+            background: #1a1a1a;
+            color: white;
+            margin-top: 2rem;
+        }
+
+        .cta-section h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .cta-section p {
+            font-size: 1.1rem;
+            color: #ccc;
+        }
+
+        /* Footer */
+        footer {
+            background: white;
+            color: #666;
+            text-align: center;
+            padding: 2rem;
+            border-top: 1px solid #f0f0f0;
+            font-size: 0.9rem;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            nav ul {
+                gap: 1.5rem;
+            }
+
+            nav a {
+                font-size: 0.85rem;
+            }
+
+            .page-header {
+                padding: 3rem 1.5rem;
+            }
+
+            .page-header h1 {
+                font-size: 1.8rem;
+            }
+
+            .page-header p {
+                font-size: 1rem;
+            }
+
+            .contact-intro,
+            .faq-section {
+                padding: 2.5rem 0;
+            }
+
+            .contact-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                padding: 2.5rem 0;
+            }
+
+            .contact-info,
+            .contact-form {
+                border-bottom: none;
+                padding-bottom: 0;
+            }
+
+            .container {
+                padding: 0 1.5rem;
+            }
+
+            .btn-submit {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            nav {
+                padding: 1rem;
+            }
+
+            nav ul {
+                gap: 1rem;
+                font-size: 0.8rem;
+            }
+
+            .page-header h1 {
+                font-size: 1.5rem;
+            }
+
+            .container {
+                padding: 0 1rem;
+            }
+
+            .contact-info h2,
+            .contact-form h2,
+            .faq-section h2 {
+                font-size: 1.3rem;
+            }
+
+            .social-links {
+                gap: 0.8rem;
+            }
+
+            .social-links a {
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
+            }
+        }
+    </style>
 </head>
-
 <body>
-
- 
-  <video autoplay muted loop id="bg-video">
-    <source src="background.mp4" type="video/mp4">
-  </video>
-
- 
-  <div class="overlay">
-    <nav class="navbar">
-      <img src="logo.jpg" alt="Webly Crafts Logo">
-      <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="services.html">Services</a></li>
-        <li><a href="portfolio.html">Portfolio</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
+    <!-- Navigation -->
+    <nav>
+        <a href="index.html" class="logo">WD</a>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="portfolio.html">Work</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
     </nav>
 
-    <h1 class="page-heading">Contact Us</h1>
+    <!-- Page Header -->
+    <div class="page-header">
+        <h1>Get in Touch</h1>
+        <p>Let's discuss your project and create something amazing together</p>
+    </div>
 
-    
-    <section id="contact">
-      <h1>Contact Me</h1>
-      <p>I’d love to hear from you! Whether you’re interested in working together, have a question, or just want to connect, feel free to reach out using the form below or via my social channels.</p>
-    
-      <h2>Get in Touch</h2>
-      <form action="#" method="post">
-        <input type="text" id="name" name="name" placeholder="Your Full Name" required>
-        <input type="email" id="email" name="email" placeholder="Your Email" required>
-        <textarea id="message" name="message" rows="5" placeholder="Write your message..." required></textarea>
-        <button type="submit">Send Message</button>
-      </form>
-    
-      <p>You can also reach me at: <strong>washingtondaniel514@gmail.com</strong></p>
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Contact Intro -->
+        <section class="contact-intro">
+            <p>Have a project in mind? Whether it's a website, branding, or digital strategy, I'd love to hear about it. Fill out the form below and I'll get back to you within 24 hours.</p>
+        </section>
+
+        <!-- Contact Content -->
+        <section class="contact-content">
+            <!-- Contact Form -->
+            <div class="contact-form">
+                <h2>Send a Message</h2>
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Phone Number (Optional)</label>
+                        <input type="tel" id="phone" name="phone">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <input type="text" id="subject" name="subject" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" required></textarea>
+                    </div>
+
+                    <button type="submit" class="btn-submit">Send Message</button>
+                    <div class="form-message" id="formMessage"></div>
+                </form>
+            </div>
+
+            <!-- Contact Info -->
+            <div class="contact-info">
+                <h2>Contact Information</h2>
+
+                <div class="info-item">
+                    <div class="info-label">Email</div>
+                    <div class="info-content">
+                        <a href="mailto:hello@washingtondaniel.com">washingtondaniel514@gmail.com</a>
+                    </div>
+                </div>
+
+                <div class="info-item">
+                    <div class="info-label">Phone</div>
+                    <div class="info-content">
+                        <a href="tel:+234809">+234 9028891969</a>
+                    </div>
+                </div>
+
+                <div class="info-item">
+                    <div class="info-label">Location</div>
+                    <div class="info-content">
+                        Lagos, Nigeria
+                    </div>
+                </div>
+
+                <div class="info-item">
+                    <div class="info-label">Response Time</div>
+                    <div class="info-content">
+                        Within 24 hours
+                    </div>
+                </div>
+
+                <h3 style="font-size: 1rem; font-weight: 600; margin-top: 2rem; margin-bottom: 1rem;">Follow Me</h3>
+                <div class="social-links">
+                    <a href="#" title="LinkedIn">in</a>
+                    <a href="#" title="Twitter">𝕏</a>
+                    <a href="#" title="Instagram">📷</a>
+                    <a href="#" title="GitHub">⚙</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="faq-section">
+            <h2>Frequently Asked Questions</h2>
+
+            <div class="faq-item">
+                <h3>How long does a typical project take?</h3>
+                <p>Project timelines vary based on complexity. A simple website typically takes 2-4 weeks, while more complex projects may take 6-12 weeks. I'll provide a detailed timeline during our consultation.</p>
+            </div>
+
+            <div class="faq-item">
+                <h3>Do you offer ongoing support?</h3>
+                <p>Yes! I offer ongoing maintenance and support packages to keep your website running smoothly. This includes updates, security patches, and performance optimization.</p>
+            </div>
+
+            <div class="faq-item">
+                <h3>What's your design process?</h3>
+                <p>I follow a 6-step process: Discovery, Strategy, Design, Development, Testing, and Launch. Each step ensures your project meets your goals and exceeds expectations.</p>
+            </div>
+
+            <div class="faq-item">
+                <h3>Do you work with remote clients?</h3>
+                <p>Absolutely! I work with clients worldwide. We communicate through email, video calls, and project management tools to ensure smooth collaboration.</p>
+            </div>
+
+            <div class="faq-item">
+                <h3>What if I already have a budget?</h3>
+                <p>I can work with any budget! Let's discuss your project goals and I'll create a solution that delivers the best value within your constraints.</p>
+            </div>
+
+            <div class="faq-item">
+                <h3>Can you help with specific technologies or platforms?</h3>
+                <p>Yes! I work with HTML, CSS, JavaScript, and various platforms. Let's discuss your specific needs and I'll recommend the best approach for your project.</p>
+            </div>
+        </section>
+    </div>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <h2>Ready to Start?</h2>
+        <p>Don't wait! Send me a message or call to discuss your project today</p>
     </section>
-  </div>
 
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Washington Daniel. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Handle form submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const form = this;
+            const formMessage = document.getElementById('formMessage');
+            
+            // Get form data
+            const formData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                subject: document.getElementById('subject').value,
+                message: document.getElementById('message').value
+            };
+            
+            // Basic validation
+            if (!formData.name || !formData.email || !formData.subject || !formData.message) {
+                formMessage.textContent = 'Please fill in all required fields.';
+                formMessage.className = 'form-message error';
+                return;
+            }
+            
+            // Email validation
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(formData.email)) {
+                formMessage.textContent = 'Please enter a valid email address.';
+                formMessage.className = 'form-message error';
+                return;
+            }
+            
+            // Show success message
+            formMessage.textContent = 'Thanks for reaching out! I\'ll get back to you soon.';
+            formMessage.className = 'form-message success';
+            
+            // Reset form
+            setTimeout(function() {
+                form.reset();
+                formMessage.className = 'form-message';
+            }, 3000);
+        });
+    </script>
 </body>
 </html>
