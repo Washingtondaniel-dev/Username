@@ -1,163 +1,421 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About - Webly Crafts</title>
-  <link rel="stylesheet" href="style.css">
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: "Poppins", sans-serif;
-      color: #fff;
-      overflow: hidden;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - Washington Daniel</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-  
-    #bg-video {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      z-index: -1;
-    }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #ffffff;
+            color: #1a1a1a;
+            line-height: 1.6;
+        }
 
-    
-    .overlay {
-      position: relative;
-      width: 100%;
-      height: 100vh;
-      background: rgba(0, 0, 0, 0.6);
-      display: flex;
-      flex-direction: column;
-    }
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: white;
+            padding: 1.2rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            border-bottom: 1px solid #f0f0f0;
+        }
 
-   
-    .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 25px 80px;
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 1000;
-    background: rgba(0, 0, 0, 0.9);
-}
-    .navbar img {
-      width: 150px;
-      border-radius: 10px;
-    }
+        nav .logo {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #1a1a1a;
+            text-decoration: none;
+            letter-spacing: -0.5px;
+        }
 
-    .nav-links {
-      list-style: none;
-      display: flex;
-      gap: 35px;
-    }
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2.5rem;
+        }
 
-    .nav-links a {
-      text-decoration: none;
-      color: #fff;
-      font-weight: 500;
-      transition: color 0.3s ease;
-    }
+        nav a {
+            color: #666;
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
 
-    .nav-links a:hover {
-      color: #00bcd4;
-    }
-    .page-heading {
-      text-align: center;
-      margin-top: 60px;
-      font-size: 2.5rem;
-      color: #00bcd4;
-    }
+        nav a:hover {
+            color: #1a1a1a;
+        }
 
-    
-    #about {
-      position: absolute;
-      top: 55%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 80%;
-      max-width: 800px;
-      background: rgba(0, 0, 0, 0.5);
-      padding: 40px;
-      border-radius: 20px;
-      text-align: center;
-      line-height: 1.6;
-      z-index: 1;
-    }
+        /* Page Content */
+        .page-header {
+            margin-top: 60px;
+            padding: 4rem 2rem;
+            text-align: center;
+            background: linear-gradient(180deg, #ffffff 0%, #f9f9f9 100%);
+        }
 
-    #about h1, #about h2 {
-      color: #00bcd4;
-      margin-bottom: 15px;
-    }
+        .page-header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
 
-    #about p {
-      font-size: 1.1rem;
-      margin-bottom: 20px;
-      color: #f1f1f1;
-    }
+        .page-header p {
+            font-size: 1.1rem;
+            color: #666;
+            font-weight: 400;
+        }
 
-  
-    @media (max-width: 768px) {
-      #about {
-        width: 90%;
-        padding: 25px;
-      }
-      .navbar {
-        flex-direction: column;
-        padding: 20px;
-      }
-      .nav-links {
-        flex-direction: column;
-        gap: 10px;
-      }
-      .page-heading {
-        font-size: 2rem;
-        margin-top: 40px;
-      }
-    }
-  </style>
+        /* Container */
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* About Section */
+        .about-section {
+            padding: 4rem 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .about-section h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-section p {
+            font-size: 1rem;
+            color: #555;
+            margin-bottom: 1.2rem;
+            line-height: 1.8;
+        }
+
+        /* Skills Section */
+        .skills-section {
+            padding: 4rem 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .skills-section h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-group h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-size: 0.9rem;
+            color: #999;
+        }
+
+        .skill-list {
+            list-style: none;
+        }
+
+        .skill-list li {
+            padding: 0.5rem 0;
+            color: #555;
+            font-size: 0.95rem;
+        }
+
+        .skill-list li:before {
+            content: "→ ";
+            margin-right: 0.5rem;
+            color: #1a1a1a;
+            font-weight: 600;
+        }
+
+        /* Experience Section */
+        .experience-section {
+            padding: 4rem 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .experience-section h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+        }
+
+        .experience-item {
+            margin-bottom: 2.5rem;
+            padding-bottom: 2.5rem;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .experience-item:last-child {
+            border-bottom: none;
+        }
+
+        .experience-item h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+        }
+
+        .experience-meta {
+            font-size: 0.9rem;
+            color: #999;
+            margin-bottom: 0.8rem;
+        }
+
+        .experience-item p {
+            color: #555;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 4rem 2rem;
+            text-align: center;
+            background: #1a1a1a;
+            color: white;
+            margin-top: 2rem;
+        }
+
+        .cta-section h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .cta-section p {
+            font-size: 1.1rem;
+            color: #ccc;
+            margin-bottom: 2rem;
+        }
+
+        .btn {
+            padding: 0.9rem 2rem;
+            font-size: 0.95rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 1.5px solid white;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: #1a1a1a;
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        footer {
+            background: white;
+            color: #666;
+            text-align: center;
+            padding: 2rem;
+            border-top: 1px solid #f0f0f0;
+            font-size: 0.9rem;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            nav ul {
+                gap: 1.5rem;
+            }
+
+            nav a {
+                font-size: 0.85rem;
+            }
+
+            .page-header {
+                padding: 3rem 1.5rem;
+            }
+
+            .page-header h1 {
+                font-size: 1.8rem;
+            }
+
+            .page-header p {
+                font-size: 1rem;
+            }
+
+            .about-section,
+            .skills-section,
+            .experience-section {
+                padding: 2.5rem 0;
+            }
+
+            .about-section h2,
+            .skills-section h2,
+            .experience-section h2 {
+                font-size: 1.5rem;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .container {
+                padding: 0 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            nav {
+                padding: 1rem;
+            }
+
+            nav ul {
+                gap: 1rem;
+            }
+
+            .page-header h1 {
+                font-size: 1.5rem;
+            }
+
+            .container {
+                padding: 0 1rem;
+            }
+
+            .about-section h2,
+            .skills-section h2,
+            .experience-section h2 {
+                font-size: 1.3rem;
+            }
+        }
+    </style>
 </head>
 <body>
-
-  
-  <video autoplay muted loop id="bg-video">
-    <source src="background.mp4" type="video/mp4">
-  </video>
-
-
-  <div class="overlay">
-    <nav class="navbar">
-      <img src="logo.jpg" alt="Webly Crafts Logo">
-      <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="services.html">Services</a></li>
-        <li><a href="portfolio.html">Portfolio</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
+    <!-- Navigation -->
+    <nav>
+        <a href="index.html" class="logo">WD</a>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="portfolio.html">Work</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
     </nav>
 
-    <h1 class="page-heading">About Webly Crafts</h1>
+    <!-- Page Header -->
+    <div class="page-header">
+        <h1>About Me</h1>
+        <p>Designer & Developer dedicated to creating beautiful digital experiences</p>
+    </div>
 
-    
-    <section id="about">
-      <h1>About Me</h1>
-      <p>Hello! I’m your web designer — passionate about crafting digital experiences that inspire. I combine technical expertise with creativity to deliver websites that are both visually appealing and functional.</p>
+    <!-- Main Content -->
+    <div class="container">
+        <!-- About Section -->
+        <section class="about-section">
+            <h2>Who I Am</h2>
+            <p>
+                I'm Washington Daniel, a passionate web designer and developer with a focus on creating clean, minimalist websites that make an impact. With expertise in modern web technologies and a keen eye for design, I help businesses and individuals establish a strong online presence.
+            </p>
+            <p>
+                My approach is simple: understand your vision, create stunning designs, and deliver exceptional results. I believe in the power of simplicity and the importance of great user experience.
+            </p>
+        </section>
 
-      <p>Over the years, I’ve built and designed projects for startups, brands, and entrepreneurs, always focusing on innovation and user experience.</p>
+        <!-- Skills Section -->
+        <section class="skills-section">
+            <h2>My Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-group">
+                    <h3>Design</h3>
+                    <ul class="skill-list">
+                        <li>UI/UX Design</li>
+                        <li>Web Design</li>
+                        <li>Graphic Design</li>
+                        <li>Brand Identity</li>
+                        <li>Typography</li>
+                    </ul>
+                </div>
+                <div class="skill-group">
+                    <h3>Development</h3>
+                    <ul class="skill-list">
+                        <li>HTML & CSS</li>
+                        <li>JavaScript</li>
+                        <li>Responsive Design</li>
+                        <li>Web Performance</li>
+                        <li>SEO Optimization</li>
+                    </ul>
+                </div>
+                <div class="skill-group">
+                    <h3>Tools & Platforms</h3>
+                    <ul class="skill-list">
+                        <li>Figma</li>
+                        <li>Adobe Creative Suite</li>
+                        <li>GitHub</li>
+                        <li>VS Code</li>
+                        <li>Web Hosting</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
 
-      <p>When I’m not designing, I explore new web trends to stay ahead of the curve and bring fresh ideas to my clients.</p>
+        <!-- Experience Section -->
+        <section class="experience-section">
+            <h2>Experience</h2>
 
-      <h2>My Mission</h2>
-      <p>To design and develop impactful websites that tell stories, connect people, and elevate brands through creativity and technology.</p>
+            <div class="experience-item">
+                <h3>Freelance Web Designer & Developer</h3>
+                <p class="experience-meta">2020 - Present</p>
+                <p>Creating custom websites for businesses and individuals. Specializing in modern design, responsive development, and performance optimization.</p>
+            </div>
+
+            <div class="experience-item">
+                <h3>Brand & Digital Designer</h3>
+                <p class="experience-meta">2019 - 2020</p>
+                <p>Designed brand identities, logos, and digital assets for various clients. Focused on creating cohesive visual experiences across all platforms.</p>
+            </div>
+
+            <div class="experience-item">
+                <h3>Junior Web Developer</h3>
+                <p class="experience-meta">2018 - 2019</p>
+                <p>Started my journey in web development, building websites and learning modern web technologies and best practices.</p>
+            </div>
+        </section>
+    </div>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <h2>Let's Work Together</h2>
+        <p>Ready to start your next project?</p>
+        <a href="contact.html" class="btn btn-secondary">Get in Touch</a>
     </section>
-  </div>
 
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Washington Daniel. All rights reserved.</p>
+    </footer>
 </body>
 </html>
