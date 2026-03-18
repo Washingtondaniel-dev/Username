@@ -23,13 +23,14 @@
             position: fixed;
             top: 0;
             width: 100%;
-            background: white;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
             padding: 1.2rem 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
             z-index: 1000;
-            border-bottom: 1px solid #f0f0f0;
+            border-bottom: 1px solid rgba(240, 240, 240, 0.5);
         }
 
         nav .logo {
@@ -58,23 +59,55 @@
             color: #1a1a1a;
         }
 
-        /* Page Header */
+        /* Page Header with Video Background */
         .page-header {
+            position: relative;
             margin-top: 60px;
-            padding: 4rem 2rem;
+            padding: 6rem 2rem;
+            min-height: 500px;
             text-align: center;
-            background: linear-gradient(180deg, #ffffff 0%, #f9f9f9 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .header-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 1;
+        }
+
+        .header-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.85), rgba(0, 0, 0, 0.2));
+            z-index: 2;
+        }
+
+        .page-header-content {
+            position: relative;
+            z-index: 3;
         }
 
         .page-header h1 {
             font-size: 2.5rem;
             font-weight: 700;
             margin-bottom: 0.5rem;
+            color: #1a1a1a;
         }
 
         .page-header p {
             font-size: 1.1rem;
-            color: #666;
+            color: #555;
             font-weight: 400;
         }
 
@@ -101,6 +134,38 @@
             line-height: 1.8;
             max-width: 600px;
             margin: 0 auto;
+        }
+
+        /* Filter Tabs */
+        .filter-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-tab {
+            padding: 0.7rem 1.5rem;
+            border: 1px solid #d0d0d0;
+            background: white;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            color: #666;
+        }
+
+        .filter-tab:hover {
+            border-color: #1a1a1a;
+            color: #1a1a1a;
+        }
+
+        .filter-tab.active {
+            background: #1a1a1a;
+            color: white;
+            border-color: #1a1a1a;
         }
 
         /* Portfolio Grid */
@@ -177,38 +242,6 @@
 
         .project-link:hover {
             border-bottom-color: #1a1a1a;
-        }
-
-        /* Filter Tabs */
-        .filter-tabs {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin-bottom: 3rem;
-            flex-wrap: wrap;
-        }
-
-        .filter-tab {
-            padding: 0.7rem 1.5rem;
-            border: 1px solid #d0d0d0;
-            background: white;
-            border-radius: 6px;
-            cursor: pointer;
-            font-weight: 500;
-            font-size: 0.9rem;
-            transition: all 0.3s ease;
-            color: #666;
-        }
-
-        .filter-tab:hover {
-            border-color: #1a1a1a;
-            color: #1a1a1a;
-        }
-
-        .filter-tab.active {
-            background: #1a1a1a;
-            color: white;
-            border-color: #1a1a1a;
         }
 
         /* Stats Section */
@@ -302,7 +335,8 @@
             }
 
             .page-header {
-                padding: 3rem 1.5rem;
+                padding: 4rem 1.5rem;
+                min-height: 400px;
             }
 
             .page-header h1 {
@@ -387,10 +421,16 @@
         </ul>
     </nav>
 
-    <!-- Page Header -->
+    <!-- Page Header with Video -->
     <div class="page-header">
-        <h1>My Work</h1>
-        <p>A selection of projects I'm proud of</p>
+        <video autoplay muted loop class="header-video">
+            <source src="https://videos.pexels.com/video-files/8018844/8018844-uhd_3840_2160_30fps.mp4" type="video/mp4">
+        </video>
+        <div class="header-overlay"></div>
+        <div class="page-header-content">
+            <h1>My Work</h1>
+            <p>A selection of projects I'm proud of</p>
+        </div>
     </div>
 
     <!-- Main Content -->
